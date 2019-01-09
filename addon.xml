@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.script.testing" version="0.0.1" name="Testing" provider-name="Testing">
+    <requires>
+        <import addon="xbmc.python" version="2.24.0"/>
+        <!-- remove optional="true" for required modules if providing the add-on for issue reproduction -->
+        <import addon="script.module.dateutil" version="2.4.2" optional="true"/>
+        <import addon="script.module.future" version="0.16.0.4" optional="true"/>
+        <import addon="script.module.inputstreamhelper" version="0.2.2" optional="true"/>
+        <import addon="script.module.kodi-six" version="0.0.2" optional="true"/>
+        <import addon="script.module.requests" version="2.12.4" optional="true"/>
+        <import addon="script.module.routing" version="0.2.0"/>
+        <import addon="script.module.six" version="1.11.0" optional="true"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="resources/lib/plugin.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.python.script" library="resources/lib/script.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.service" name="testing123.service" library="resources/lib/service.py"/>
+    <extension point="xbmc.addon.metadata">
+        <news>This is a test</news>
+        <summary lang="en_GB">An add-on/script/service for testing.</summary>
+        <description lang="en_GB">An add-on/script/service skeleton for testing of code snippets or reproducing issues.</description>
+        <language></language>
+        <platform>all</platform>
+        <license>Unlicense</license>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.png</fanart>
+        </assets>
+        <reuselanguageinvoker>false</reuselanguageinvoker>
+    </extension>
+</addon>
