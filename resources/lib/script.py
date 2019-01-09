@@ -5,6 +5,8 @@
     See LICENSES/Unlicense for more information.
 """
 
+import sys
+
 try:
     from kodi_six import xbmc
     from kodi_six import xbmcaddon
@@ -21,5 +23,20 @@ except ImportError:
 
 addon = xbmcaddon.Addon(id='plugin.script.testing')
 
+
+def _get_args():
+    args_dict = {}
+    argv = [arg.split('=') for arg in sys.argv if len(arg.split('=')) == 2]
+    for args in argv:
+        args_dict[args[0].lower()] = args[1]
+    return args_dict
+
+
+def run():
+    args = _get_args()
+
+    # -- add code --
+
+
 if __name__ == '__main__':
-    pass
+    run()
