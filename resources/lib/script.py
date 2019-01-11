@@ -3,6 +3,10 @@
 
     SPDX-License-Identifier: Unlicense
     See LICENSES/Unlicense for more information.
+
+    Usage:
+        RunScript(special://home/addons/plugin.script.testing/resources/lib/script.py,mode=main,param=value)
+
 """
 
 import sys
