@@ -22,6 +22,7 @@ except ImportError:
 addon = xbmcaddon.Addon(id='plugin.script.testing')
 
 
+# noinspection PyPep8Naming
 class Monitor(xbmc.Monitor):
     """ https://codedocs.xyz/xbmc/xbmc/group__python__monitor.html """
 

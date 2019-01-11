@@ -22,6 +22,7 @@ except ImportError:
 addon = xbmcaddon.Addon(id='plugin.script.testing')
 
 
+# noinspection PyPep8Naming
 class Player(xbmc.Player):
     """ https://codedocs.xyz/xbmc/xbmc/group__python___player_c_b.html """
 
