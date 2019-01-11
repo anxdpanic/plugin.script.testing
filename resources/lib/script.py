@@ -29,13 +29,11 @@ addon = xbmcaddon.Addon(id='plugin.script.testing')
 
 
 def _get_args():
-    args_dict = {'mode': None}
-    if len(sys.argv) == 1:
-        args_dict['mode'] = 'main'
-    else:
-        argv = [arg.split('=') for arg in sys.argv if len(arg.split('=')) == 2]
-        for args in argv:
-            args_dict[args[0].lower()] = args[1]
+    args_dict = {'mode': 'main'}
+    argv = [arg.split('=') for arg in sys.argv if len(arg.split('=')) == 2]
+    for args in argv:
+        args_dict[args[0].lower()] = args[1]
+
     return args_dict
 
 
