@@ -46,15 +46,15 @@ def main():
 
     # plugin://plugin.script.testing/folder
     item = xbmcgui.ListItem(label=addon.getLocalizedString(30010))  # label: Folder
-    create_menu_item(list_item=item, route='folder', is_folder=True, is_playable=None)
+    create_menu_item(list_item=item, route=folder, is_folder=True, is_playable=None)
 
     # plugin://plugin.script.testing/play
     item = xbmcgui.ListItem(label=addon.getLocalizedString(30011))  # label: Playable Item
-    create_menu_item(list_item=item, route='play', is_folder=False, is_playable=True)
+    create_menu_item(list_item=item, route=play, is_folder=False, is_playable=True)
 
     # plugin://plugin.script.testing/action
     item = xbmcgui.ListItem(label=addon.getLocalizedString(30012))  # label: Unplayable Item
-    create_menu_item(list_item=item, route='action', is_folder=False, is_playable=False)
+    create_menu_item(list_item=item, route=action, is_folder=False, is_playable=False)
 
     xbmcplugin.endOfDirectory(handle=plugin.handle, succeeded=True, cacheToDisc=False)
 
@@ -102,3 +102,7 @@ def action():
     # -- add code --
 
     pass
+
+
+if __name__ == '__main__':
+    plugin.run()
