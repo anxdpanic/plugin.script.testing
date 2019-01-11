@@ -14,6 +14,10 @@ msgstr ""
 "Language: en_GB\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
+msgctxt "#30000"
+msgid "Testing"
+msgstr ""
+
 msgctxt "#30010"
 msgid "Folder"
 msgstr ""
@@ -24,4 +28,12 @@ msgstr ""
 
 msgctxt "#30012"
 msgid "Unplayable Item"
+msgstr ""
+
+msgctxt "#30013"
+msgid "RunPlugin action"
+msgstr ""
+
+msgctxt "#30014"
+msgid "RunScript action"
 msgstr ""

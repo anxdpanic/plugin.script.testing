@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
-
+    <category label="30000">
+        <setting id="testing.runplugin" type="action" label="30013" action="RunPlugin(plugin://$ID/action)"/>
+        <setting id="testing.runscript" type="action" label="30014" action="RunScript(special://home/addons/$ID/resources/lib/script.py,mode=main,param=value)"/>
+    </category>
 </settings>
