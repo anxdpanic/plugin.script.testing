@@ -22,8 +22,8 @@
     <extension point="xbmc.python.module" library="resources/lib/lib/"/>
     <extension point="xbmc.addon.metadata">
         <news>This is a test</news>
-        <summary lang="en_GB">An add-on, module, script, and service for testing.</summary>
-        <description lang="en_GB">An add-on, module, script, and service skeleton for testing of code snippets or reproducing issues.</description>
+        <summary lang="en_GB">An add-on, module, script, and service skeleton for testing or reproducing issues.</summary>
+        <description lang="en_GB">An add-on, module, script, and service skeleton for testing or reproducing issues.</description>
         <language></language>
         <platform>all</platform>
         <license>Unlicense</license>
