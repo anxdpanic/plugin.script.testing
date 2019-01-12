@@ -37,24 +37,29 @@ def main():
     - Unplayable Item
     """
 
-    def create_menu_item(list_item, route, is_folder, is_playable):
+    def create_menu_item(label, route, is_folder, is_playable):
+        item = xbmcgui.ListItem(label=label)
+
         if isinstance(is_playable, bool):
             item.setProperty(key='IsPlayable', value=str(is_playable).lower())
 
         xbmcplugin.addDirectoryItem(handle=plugin.handle, url=plugin.url_for(func=route),
-                                    listitem=list_item, isFolder=is_folder)
+                                    listitem=item, isFolder=is_folder)
 
     # plugin://plugin.script.testing/folder
-    item = xbmcgui.ListItem(label=addon.getLocalizedString(30010))  # label: Folder
-    create_menu_item(list_item=item, route=folder, is_folder=True, is_playable=None)
+    # label: Folder
+    create_menu_item(label=addon.getLocalizedString(30010), route=folder, is_folder=True,
+                     is_playable=None)
 
     # plugin://plugin.script.testing/play
-    item = xbmcgui.ListItem(label=addon.getLocalizedString(30011))  # label: Playable Item
-    create_menu_item(list_item=item, route=play, is_folder=False, is_playable=True)
+    # label: Playable Item
+    create_menu_item(label=addon.getLocalizedString(30011), route=play, is_folder=False,
+                     is_playable=True)
 
     # plugin://plugin.script.testing/action
-    item = xbmcgui.ListItem(label=addon.getLocalizedString(30012))  # label: Unplayable Item
-    create_menu_item(list_item=item, route=action, is_folder=False, is_playable=False)
+    # label: Unplayable Item
+    create_menu_item(label=addon.getLocalizedString(30012), route=action, is_folder=False,
+                     is_playable=False)
 
     xbmcplugin.endOfDirectory(handle=plugin.handle, succeeded=True, cacheToDisc=False)
 
