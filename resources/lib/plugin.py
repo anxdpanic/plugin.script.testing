@@ -48,70 +48,63 @@ def main():
         xbmcplugin.addDirectoryItem(handle=plugin.handle, url=plugin.url_for(func=route),
                                     listitem=item, isFolder=is_folder)
 
-    # plugin://plugin.script.testing/folder
-    # label: Folder
-    create_menu_item(label=addon.getLocalizedString(30010), route=folder, is_folder=True,
-                     is_playable=None)
-
-    # plugin://plugin.script.testing/play
-    # label: Playable Item
-    create_menu_item(label=addon.getLocalizedString(30011), route=play, is_folder=False,
+    create_menu_item(label='playable1. PlayMedia(plugin://) Crashes', route=play1, is_folder=False,
                      is_playable=True)
-
-    # plugin://plugin.script.testing/action
-    # label: Unplayable Item
-    create_menu_item(label=addon.getLocalizedString(30012), route=action, is_folder=False,
+    create_menu_item(label='playable2. PlayMedia(http://) Doesn\'t Crash', route=play2, is_folder=False,
+                     is_playable=True)
+    create_menu_item(label='unplayable1. PlayMedia(plugin://) Doesn\'t Crash', route=action1, is_folder=False,
                      is_playable=False)
 
     xbmcplugin.endOfDirectory(handle=plugin.handle, succeeded=True, cacheToDisc=False)
 
 
-@plugin.route('/folder')
-def folder():
+@plugin.route('/play1')
+def play1():
     """
-    Plugin path: plugin://plugin.script.testing/folder
-
-    "Folder" menu item endpoint
+        ********* CRASHES
     """
 
-    # -- add code --
-
-    xbmcplugin.endOfDirectory(handle=plugin.handle, succeeded=True, cacheToDisc=False)
-
-
-@plugin.route('/play')
-def play():
-    """
-    Plugin path: plugin://plugin.script.testing/play
-
-    "Playable Item" menu item endpoint
-    """
-
-    playable_path = ''
+    playable_path = 'plugin://plugin.video.youtube/play/?video_id=5Lxu75r3-kI'
 
     # -- add code --
 
     list_item = xbmcgui.ListItem(label=addon.getLocalizedString(30011))  # label: Playable Item
-    list_item.setProperty(key='IsPlayable', value='true')
     list_item.setInfo('video', {'title': addon.getLocalizedString(30011)})
+    list_item.setProperty(key='IsPlayable', value='true')
     list_item.setPath(path=playable_path)  # add path
+    # -- add code --
+    xbmc.executebuiltin('PlayMedia(%s)' % playable_path)  # this shouldn't be called from a playable item, but also shouldn't crash when it's a plugin:// url
+
+    xbmcplugin.setResolvedUrl(handle=plugin.handle, succeeded=True, listitem=list_item)  # crashes with or without this
+
+
+@plugin.route('/play2')
+def play2():
+    """
+        ********* DOESN'T CRASH
+    """
+
+    playable_path = 'https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4'
 
     # -- add code --
+
+    list_item = xbmcgui.ListItem(label=addon.getLocalizedString(30011))  # label: Playable Item
+    list_item.setInfo('video', {'title': addon.getLocalizedString(30011)})
+    list_item.setProperty(key='IsPlayable', value='true')
+    list_item.setPath(path=playable_path)  # add path
+    # -- add code --
+    xbmc.executebuiltin('PlayMedia(%s)' % 'http://download.blender.org/ED/ed3d_sidebyside-RL-2x1920x1038_24fps.mkv')  # this shouldn't be called from a playable item, but also shouldn't crash when it's a plugin:// url
 
     xbmcplugin.setResolvedUrl(handle=plugin.handle, succeeded=True, listitem=list_item)
 
 
-@plugin.route('/action')
-def action():
+@plugin.route('/action1')
+def action1():
     """
-    Plugin path: plugin://plugin.script.testing/action
-
-    "Unplayable Item" menu item endpoint
+        ********* DOESN'T CRASH
     """
 
-    # -- add code --
-
-    pass
+    xbmc.executebuiltin('PlayMedia(%s)' % 'plugin://plugin.video.youtube/play/?video_id=5Lxu75r3-kI')
 
 
 if __name__ == '__main__':
