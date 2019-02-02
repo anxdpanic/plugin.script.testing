@@ -42,6 +42,8 @@ def main():
 
         if isinstance(is_playable, bool):
             item.setProperty(key='IsPlayable', value=str(is_playable).lower())
+            if is_playable:
+                item.setInfo('video', {'title': label})
 
         xbmcplugin.addDirectoryItem(handle=plugin.handle, url=plugin.url_for(func=route),
                                     listitem=item, isFolder=is_folder)
@@ -85,11 +87,14 @@ def play():
     "Playable Item" menu item endpoint
     """
 
+    playable_path = ''
+
     # -- add code --
 
     list_item = xbmcgui.ListItem(label=addon.getLocalizedString(30011))  # label: Playable Item
     list_item.setProperty(key='IsPlayable', value='true')
-    list_item.setPath(path='')  # add path
+    list_item.setInfo('video', {'title': addon.getLocalizedString(30011)})
+    list_item.setPath(path=playable_path)  # add path
 
     # -- add code --
 
