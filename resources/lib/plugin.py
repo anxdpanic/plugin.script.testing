@@ -94,7 +94,7 @@ def play():
     list_item = xbmcgui.ListItem(label=addon.getLocalizedString(30011))  # label: Playable Item
     list_item.setProperty(key='IsPlayable', value='true')
     list_item.setInfo('video', {'title': addon.getLocalizedString(30011)})
-    list_item.setPath(path=playable_path)  # add path
+    list_item.setPath(path=playable_path)
 
     # -- add code --
 
